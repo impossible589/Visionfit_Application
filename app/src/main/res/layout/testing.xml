@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity">
+
+    <!-- Header Section - Compact -->
+    <LinearLayout
+        android:id="@+id/headerSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="12dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pushupLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VisionFit AI"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/informertext"
+                android:text="Ready !!!"
+                android:textColor=" #2ECC71"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+
+
+            >
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                app:srcCompat="@drawable/sound"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:onClick="soundclicked"
+
+
+                />
+            <ImageButton
+                android:id="@+id/soundbtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:onClick="soundclicked"
+                app:srcCompat="@drawable/sound"
+
+                />
+
+
+        </LinearLayout>
+
+        <!-- Counter Display - Top Right -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+
+          >
+
+
+            <ImageButton
+                android:id="@+id/cameraFlipBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:onClick="cameraflipclicked"
+                app:srcCompat="@drawable/cameraswitch"
+
+
+                 />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Main Content - No Scroll -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerSection"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/main_card_bg">
+
+        <!-- Camera Preview Section - Optimized Size -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:backgroundTint="#1A1A2E">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- PreviewView for CameraX -->
+                <androidx.camera.view.PreviewView
+                    android:id="@+id/previewView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:scaleType="fillCenter" >
+
+                    <LinearLayout
+                        android:id="@+id/cameraPlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#1A1A2E"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📹"
+                            android:textSize="50sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Attension "
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="At least 60% of body should be In Camera  !! \n         Press START to Detect Exercises"
+                            android:textColor="#B0FFFFFF"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                </androidx.camera.view.PreviewView>
+
+                <!-- Camera Placeholder -->
+
+                <!-- Live Indicator -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/button_stop"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:visibility="gone"
+                    android:elevation="10dp">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/live_dot"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LIVE"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Camera Flip Button -->
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/flip_camera_bg"
+                    android:src="@android:drawable/ic_menu_rotate"
+                    android:tint="@color/white"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:contentDescription="Flip Camera" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Exercise Type Selector - Compact -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="8dp"
+            android:gravity="center">
+
+            <!-- Push-ups Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="#121212"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💪"
+                        android:textSize="24sp"
+                        android:padding="9dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:text="Push-ups"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/pushupCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sit-ups Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                android:layout_marginHorizontal="6dp"
+                android:backgroundTint="#E0E0E0"
+              >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sit-ups"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+
+
+                        />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coming Soon"
+                            android:textColor="@color/text_gray"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  0  "
+
+
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Squats Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+
+                app:cardElevation="4dp"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="#E0E0E0"
+               >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏃"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Squats"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coming Soon"
+                            android:textColor="@color/text_gray"
+                            android:textSize="9sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  0  "
+
+
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Exercise Type Display -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💪 Push-ups Selected"
+            android:textColor="@color/primary_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingVertical="8dp" />
+
+        <!-- Control Buttons - Compact -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="15dp"
+            android:gravity="center">
+
+            <!-- Start Button -->
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:onClick="startbtnclicked2"
+                android:text="START"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_start"
+                android:layout_marginEnd="6dp"
+                android:elevation="5dp"
+                android:stateListAnimator="@null" />
+
+            <!-- Stop Button -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:text="🔄 RESET"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_start"
+                android:layout_marginHorizontal="6dp"
+                android:elevation="5dp"
+
+                android:onClick="resetclicked"
+
+                android:stateListAnimator="@null" />
+
+            <!-- Reset Button -->
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

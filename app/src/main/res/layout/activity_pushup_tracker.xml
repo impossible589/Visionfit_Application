@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="#0F0F0F">
+    <LinearLayout
+        android:id="@+id/summaryLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="8dp">
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Push-up Progress"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginLeft="50dp"
+        android:paddingBottom="8dp" />
+
+        <ImageButton
+            android:id="@+id/btnSave2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Sound Toggle"
+            android:onClick="trackesettingclicked"
+            android:padding="1dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/setting" />
+    </LinearLayout>
+
+    <!-- Streak and Total section -->
+    <LinearLayout
+        android:id="@+id/summaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="8dp">
+
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=" Total: 0"
+            android:textColor="#1DB954"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Weekday labels -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView android:text="M" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="T" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="W" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="T" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="F" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="S" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="S" android:textColor="#777" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- Heatmap grid -->
+
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="625dp"
+        >
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridHeatmap"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        app:columnCount="5"
+
+        app:alignmentMode="alignMargins"
+      />
+    </ScrollView>
+
+    <!-- Selected date and input -->
+    <ImageButton
+        android:id="@+id/tvSelectedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#CCCCCC"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingTop="8dp"/>
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:backgroundTint="#1DB954"
+        android:textColor="#FFFFFF"
+        android:onClick="closebtnclicked"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+       />
+
+</LinearLayout>

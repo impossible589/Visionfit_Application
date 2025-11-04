@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Calendar header text -->
+    <style name="CalendarHeader" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Calendar date text -->
+    <style name="CalendarDateText" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>
+
+
+
+
+

@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="new_version_available">New Version Available!</string>
+    <string name="current_version_placeholder">Current Version: %1$s</string>
+    <string name="new_version_placeholder">New Version: %1$s</string>
+    <string name="update_reason">Update now to enjoy new features, performance improvements, and bug fixes.</string>
+    <string name="update_now">Update Now</string>
+    <string name="skip_for_now">Skip for Now</string>
+    <string name="update_icon_desc">Update Icon</string>
+    <string name="app_name">VisionFit AI</string>
+    <string name="app_logo">VisionFit AI Logo</string>
+</resources>

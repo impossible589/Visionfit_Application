@@ -1,0 +1,15 @@
+<!-- res/menu/menu_main.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Reset Records"
+
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_about"
+        android:title="Modify Daily Target"
+
+        app:showAsAction="never" />
+</menu>
