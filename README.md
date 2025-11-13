@@ -15,7 +15,7 @@ PushUp (user in the "up" position)
 
 PushDown (user in the "down" position)
 
-Nothing (no relevant pose)
+Rubbish (no relevant pose)
 
 
 This classification-only approach keeps the runtime pipeline simple and efficient while still delivering reliable rep counting for standard push-up form.
