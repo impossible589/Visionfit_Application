@@ -124,7 +124,7 @@ Because the model directly classifies each frame, the counting algorithm is even
 Metric	Observation
 
 Counting Accuracy	Highly dependent on model training quality.
-Average Latency	~30–50 ms per frame (on mid-range Android).
+Average Latency	~60–90 ms per frame (on mid-range Android).
 CPU Usage	Under 40% typical load.
 Offline Capability	Fully functional without internet.
 
