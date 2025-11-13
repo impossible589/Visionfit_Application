@@ -47,13 +47,13 @@ The app’s runtime flow is classification-driven rather than angle-driven. Belo
 2. Preprocessing / Conversion: Frames are preprocessed, and optionally converted into a simplified representation by mediapipeimagetoskeleton.java (if present) or resized directly to the model input size.
 
 
-3. TFLite Inference: TFLiteClassifier.java loads rubbish.tflite and runs inference on each preprocessed frame. The model returns one of three class scores: PushUp, PushDown, or Nothing.
+3. TFLite Inference: TFLiteClassifier.java loads rubbish.tflite and runs inference on each preprocessed frame. The model returns one of three class scores: PushUp, PushDown, or Rubbish(Nothing).
 
 
 4. State Logic & Counting: PushupDecorator / PushupTrackerActivity implement a small finite-state logic that increments the rep counter when a PushDown → PushUp transition is detected (i.e., a full down-to-up cycle).
 
 
-5. Visualization & Rewards: BodyDrawer draws overlays if available, and RewardAnimationView plays animations on milestones.
+5. Visualization & Rewards: BodyDrawer draws overlays, and RewardAnimationView plays animations on milestones.
 
 
 
@@ -97,23 +97,6 @@ Rep count update → UI & RewardAnimationView
 
 Because the model directly classifies each frame, the counting algorithm is event-driven based on class labels rather than numerical joint angles.
 
-Finite-State Counting Logic
-
-if (label.equals("PushDown") && (state.equals("UP") || state.equals("UNKNOWN"))) {
-    state = "DOWN";
-} else if (label.equals("PushUp") && state.equals("DOWN")) {
-    repCount++;
-    state = "UP";
-}
-
-Maintain a state variable with values like UNKNOWN, UP, DOWN.
-
-For each frame, obtain the top class from the TFLite model.
-
-Ignore Nothing unless it persists, which may trigger a state reset after a timeout.
-
-
-This prevents false increments due to noisy single-frame predictions. Additional smoothing can be applied using confidence thresholds or consecutive-frame validation.
 
 
 ---
@@ -167,7 +150,7 @@ Hardware Delegates: Use NNAPI or GPU acceleration for higher FPS.
 
 9. Conclusion
 
-VisionFit AI adopts a classifier-first approach for workout detection — a small TensorFlow Lite model recognizes frame-level states (PushUp, PushDown, Nothing) and the app’s FSM translates them into rep counts. The architecture balances speed, simplicity, and offline operation, making it ideal for mobile fitness tracking.
+VisionFit AI adopts a classifier-first approach for workout detection — a small TensorFlow Lite model recognizes frame-level states (PushUp, PushDown, Rubbish) and the app’s FSM translates them into rep counts. The architecture balances speed, simplicity, and offline operation, making it ideal for mobile fitness tracking.
 
 
 ---
